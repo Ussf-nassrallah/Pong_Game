@@ -34,6 +34,41 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 
+
+# Game functions
+def first_paddle_up():
+    y = first_paddle.ycor()
+    y += 20
+    first_paddle.sety(y)
+
+
+def first_paddle_down():
+    y = first_paddle.ycor()
+    y -= 20
+    first_paddle.sety(y)
+
+
+def second_paddle_up():
+    y = second_paddle.ycor()
+    y += 20
+    second_paddle.sety(y)
+
+
+def second_paddle_down():
+    y = second_paddle.ycor()
+    y -= 20
+    second_paddle.sety(y)
+
+
+# keyboard bindings
+wind.listen()
+
+wind.onkeypress(first_paddle_up, 'w')
+wind.onkeypress(first_paddle_down, 's')
+
+wind.onkeypress(second_paddle_up, 'Up')
+wind.onkeypress(second_paddle_down, 'Down')
+
 # Game loop
 while True:
     wind.update() # updates the screen everytime the loop run
