@@ -33,6 +33,8 @@ ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 0.4
+ball.dy = 0.4
 
 
 # Game functions
@@ -71,4 +73,26 @@ wind.onkeypress(second_paddle_down, 'Down')
 
 # Game loop
 while True:
-    wind.update() # updates the screen everytime the loop run
+    # updates the screen everytime the loop run
+    wind.update()
+
+    # move the ball
+    ball.setx(ball.dx + ball.xcor())
+    ball.sety(ball.dy + ball.ycor())
+
+    # check border
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
