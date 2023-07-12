@@ -29,12 +29,12 @@ second_paddle.goto(350, 0)
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
-ball.shape("circle")
+ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.4
-ball.dy = 0.4
+ball.dx = 0.3
+ball.dy = 0.3
 
 
 # Game functions
@@ -95,4 +95,16 @@ while True:
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx *= -1
+
+    if (340 < ball.xcor() < 350) and (second_paddle.ycor() + 40 > ball.ycor() > second_paddle.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (340 < ball.xcor() < 350) and (second_paddle.ycor() + 40 > ball.ycor() > second_paddle.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (-350 < ball.xcor() < -340) and (first_paddle.ycor() + 40 > ball.ycor() > first_paddle.ycor() - 40):
+        ball.setx(-340)
         ball.dx *= -1
