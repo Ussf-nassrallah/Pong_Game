@@ -36,6 +36,19 @@ ball.goto(0, 0)
 ball.dx = 0.3
 ball.dy = 0.3
 
+# Score
+
+player_1_score = 0
+player_2_score = 0
+
+score = turtle.Turtle()
+score.speed(0)
+score.penup()
+score.color("white")
+score.hideturtle()
+score.goto(0, 260)
+score.write("Player 1: 0 || Player 2: 0", align="center", font=("Hack", 20, "normal"))
+
 
 # Game functions
 def first_paddle_up():
@@ -92,10 +105,18 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        player_1_score += 1
+        score.clear()
+        score.write("Player 1: {} || Player 2: {}".format(player_1_score, player_2_score), align="center",
+                    font=("Hack", 20, "normal"))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        player_2_score += 1
+        score.clear()
+        score.write("Player 1: {} || Player 2: {}".format(player_1_score, player_2_score), align="center",
+                    font=("Hack", 20, "normal"))
 
     if (340 < ball.xcor() < 350) and (second_paddle.ycor() + 40 > ball.ycor() > second_paddle.ycor() - 40):
         ball.setx(340)
